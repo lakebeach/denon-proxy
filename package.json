@@ -1,0 +1,30 @@
+{
+  "name": "denon-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/proxy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lakebeach/denon-proxy.git"
+  },
+  "keywords": [
+    "denon",
+    "api",
+    "rest",
+    "websockets"
+  ],
+  "author": "lakebeach",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lakebeach/denon-proxy/issues"
+  },
+  "homepage": "https://github.com/lakebeach/denon-proxy#readme",
+  "dependencies": {
+    "express": "4.18.1",
+    "ws": "8.8.1"
+  }
+}
