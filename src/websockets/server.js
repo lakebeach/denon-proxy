@@ -1,4 +1,6 @@
 import { WebSocketServer } from 'ws';
+import { parse as parseRequest } from './request/index.js';
+import { parse as parseResponse } from './response/index.js';
 
 export default class Server {
   #clients;
@@ -36,15 +38,14 @@ export default class Server {
         console.log('pong');
       });
     
-      ws.on('message', async (data) => {
-        const messageAsString = data?.toString();
-        console.log('message', messageAsString);
+      ws.on('message', async (message) => {
+        const messageAsString = parseRequest(message);
         await this.#denon.connect();
         this.#denon.send(messageAsString);
       });
     
       ws.on('close', () => {
-        console.log('connection closed')
+        console.log('connection closed');
         this.#clients.delete(ws);
       });
     });
@@ -52,9 +53,11 @@ export default class Server {
       clearInterval(this.#pongInterval);
     });
     this.#disposeListener = this.#denon.onResponse((command, value, type) => {
-      this.#clients.forEach((client) => {
-        client.send(JSON.stringify({command, value, type}));
-      });
+      const response = parseResponse(command, value, type);
+      if(!response) {
+        return;
+      }
+      this.#clients.forEach((client) => { client.send(response); });
     });
     this.#pongInterval = setInterval(() => {
       this.#wss.clients.forEach((ws) => {

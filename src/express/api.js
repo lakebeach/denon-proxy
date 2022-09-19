@@ -27,6 +27,6 @@ export default class Api {
       }
     });
     this.#app.listen(this.#port);
-    console.log('api up')
+    console.log('api up');
   }
 }
