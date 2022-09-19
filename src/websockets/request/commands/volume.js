@@ -1,6 +1,9 @@
 export function volume({zone, value}) {
   const val = parseValue(value, zone);
-  return `Z${zone}${value}`;
+  if (zone === 'M') {
+    return `MV${val}`;
+  }
+  return `Z${zone}${val}`;
 }
 
 function parseValue(value, zone) {

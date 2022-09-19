@@ -73,7 +73,7 @@ export default class Connection {
                 return;
               }
               return this.#socket.write(command);
-            }, 1000);
+            }, 25);
             resolve();
           });
         });
@@ -90,10 +90,12 @@ export default class Connection {
     try {
       const instruction = parseInput(input);
       console.log('instruction:', instruction.replace('\r', '<CR>'));
-      this.#queue.push(instruction);
+      if (!this.#queue.includes(instruction)) {
+        this.#queue.push(instruction);
+      }
       return instruction;
-    } catch {
-      console.log('invalid input');
+    } catch (err) {
+      console.log('invalid input', err);
       return;
     }
   };

@@ -13,13 +13,13 @@ function parseZone(command) {
 }
 
 function parseCommand(command, value) {
-  if (/^Z[2|3]MAX/.test(command)) {
+  if (/^Z[23M]MAX/.test(command)) {
     return 'maxvolume';
   }
-  if (/^Z[2|3]MIN/.test(command)) {
+  if (/^Z[23M]MIN/.test(command)) {
     return 'minvolume';
   }
-  if (/^Z[2|3]$/.test(command)) {
+  if (/^Z[23]$/.test(command)) {
     if(Number.isNaN(Number(value))) {
       return /^ON|OFF$/.test(value)
         ? 'power'
@@ -27,13 +27,13 @@ function parseCommand(command, value) {
     }
     return 'volume';
   }
-  if (/^Z[2|3]MU/.test(command)) {
+  if (/^Z[23]MU/.test(command)) {
     return 'mute';
   }
 }
 
 function parseValue(value, command) {
-  if (/^Z[2|3]$/.test(command) && !Number.isNaN(Number(value))) {
+  if (/^Z[23M]$/.test(command) && !Number.isNaN(Number(value))) {
     return parseVolume(value);
   }
   return value;

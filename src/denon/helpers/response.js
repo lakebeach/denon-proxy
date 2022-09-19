@@ -7,7 +7,7 @@ const commands = {
   main: /^(ZM)(ON|OFF)/,
   video: /^(SV)(ON|OFF)/,
   restorer: /^(PSRSTR\s*)(ON|OFF)/,
-  zone: /^(Z[23](?:MU|CS|CV|HPF|PS|MAX|MIN|)\s*)(.+)/,
+  zone: /^(Z[23M](?:MU|CS|CV|HPF|PS|MAX|MIN|)\s*)(.+)/,
 };
 
 export function parse(data) {
