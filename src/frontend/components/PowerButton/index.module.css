@@ -1,0 +1,15 @@
+.button {
+  border: 0;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  width: 100%;
+}
