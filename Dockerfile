@@ -12,6 +12,7 @@ FROM node:lts-alpine
 ENV NODE_ENV=production
 ENV AVR_HOST=denon.nu
 ENV WEB_PORT=8080
+ENV WS_PORT=8090
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
@@ -26,6 +27,6 @@ COPY ./src/proxy.js ./src/
 COPY ./src/backend ./src/backend
 
 # Expose the web service port
-EXPOSE ${WEB_PORT}
+EXPOSE ${WEB_PORT} ${WS_PORT}
 
-CMD node . ${AVR_HOST} ${WEB_PORT}
+CMD node . ${AVR_HOST} ${WEB_PORT} ${WS_PORT}
