@@ -6,8 +6,7 @@ import './index.css';
 
 
 render(() => (
-  // <DenonProvider host="localhost" port="1337">
-  <DenonProvider host="rpi-server.local" port="1337">
+  <DenonProvider host="localhost" port="9000">
     <App />
   </DenonProvider>
 ), document.getElementById('root'));

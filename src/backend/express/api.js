@@ -7,13 +7,14 @@ export default class Api {
 
   #port
 
-  constructor(denonConnection, port = 8080) {
+  constructor(denonConnection, port) {
     this.#denon = denonConnection;
     this.#port = port;
   }
 
   start = () => {
     this.#app = express();
+    this.#app.use(express.static('dist'));
     this.#app.get('/api', (req, res) => { res.send('Denon API is running'); });
     this.#app.get('/api/:command', async (req, res) => {
       try {
