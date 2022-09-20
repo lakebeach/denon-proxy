@@ -1,6 +1,6 @@
-import DenonConnection from './denon/connection.js';
-import ExpressApi from './express/api.js';
-import WebSocketServer from './websockets/server.js';
+import DenonConnection from './backend/denon/connection.js';
+import ExpressApi from './backend/express/api.js';
+import WebSocketServer from './backend/websockets/server.js';
 
 const denonhost = process.argv[2];
 const web_port = process.argv[3];
