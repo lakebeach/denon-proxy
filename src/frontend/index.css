@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-animated-bg: rgb(15, 23, 42);
+    --color-animated-dot-1: rgb(255, 172, 172);
+    --color-animated-dot-2: rgb(228, 90, 132);
+    --color-animated-dot-3: rgb(88, 60, 135);
+  }
+}
+
+@layer components {
+  .card {
+    @apply relative inline-flex flex-wrap flex-1 w-64 p-6 border-0 rounded-xl drop-shadow-lg
+    bg-slate-800 bg-[url('./assets/bg-pattern.jpg')] bg-no-repeat bg-center bg-cover
+      before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:rounded-xl before:backdrop-blur-sm;
+  }
+  .card > * {
+    position: relative;
+  }
+}

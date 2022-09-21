@@ -1,0 +1,21 @@
+{
+  "name":"Zone Control",
+  "short_name":"Zone",
+  "icons":[
+    {
+      "src":"/android-chrome-192x192.png",
+      "sizes":"192x192",
+      "type":"image/png"
+    },
+    {
+      "src":"/android-chrome-512x512.png",
+      "sizes":"512x512",
+      "type":"image/png"
+    }
+  ],
+  "theme_color":"#282c34",
+  "background_color":"#282c34",
+  "display":"standalone",
+  "categories": ["remote control", "audio", "multi zone"],
+  "description": "Control source and voulume for the different zones on a denon avr."
+}
