@@ -1,18 +1,16 @@
+import { PageHeader } from './components/PageHeader';
 import { ZoneControls } from './components/ZoneControls';
-import styles from './App.module.css';
 
 function App() {
   return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        A solid dashboard
-      </header>
-      <main>
+    <>
+      <PageHeader />
+      <main class="flex flex-wrap p-2">
         <ZoneControls label="Vardagsrummet" zone="M" />
         <ZoneControls label="Köket" zone="2" />
         {/* <ZoneControls label="Zon3" zone="3" /> */}
       </main>
-    </div>
+    </>
   );
 }
 

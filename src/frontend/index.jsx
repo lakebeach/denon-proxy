@@ -7,7 +7,7 @@ import './index.css';
 const port = import.meta.env.NODE_ENV === 'production' ? 'WS_PORT' : 8090;
 
 render(() => (
-  <DenonProvider host={window.location.hostname} port={port}>
+  <DenonProvider host="rpi-server.local" port={port}>
     <App />
   </DenonProvider>
 ), document.getElementById('root'));
