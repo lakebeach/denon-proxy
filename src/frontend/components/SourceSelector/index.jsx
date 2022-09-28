@@ -1,12 +1,13 @@
-import { For, onMount } from "solid-js";
+import { onMount } from "solid-js";
 import { useDenon } from "../../api/DenonClient";
-import { SpotifyButton } from "../SpotifyButton";
-import { sourcelist } from "./sourcelist";
+import { AppleTvButton, MainSourceButton, SpotifyButton } from "../SourceButtons";
+// import { sourcelist } from "./sourcelist";
 // import styles from "./index.module.css";
 
 export function SourceSelector(props) {
   const [state, {send}] = useDenon();
   const value = () => state[props.zone]?.source;
+  const sources = getSources(props.zone);
   const sendCommand = (value) => {
     const command = {
       zone: props.zone,
@@ -18,7 +19,24 @@ export function SourceSelector(props) {
 
   onMount(() => { sendCommand('?'); });
 
-  return <SpotifyButton zone={props.zone} />;
+  return (
+    <ul class="flex list-none gap-4">
+      {sources.map(Source => (
+        <li>
+          <Source zone={props.zone} />
+        </li>
+      ))}
+    </ul>
+  );
+
+  function getSources(zone) {
+    const sources = [AppleTvButton, SpotifyButton];
+    if(zone !== 'M') {
+      sources.push(MainSourceButton);
+    }
+    return sources;
+  }
+  
   // return (
   //   <select
   //     //classList={{ [styles.slider]: true, [`${props.class}`]: !!props.class }}

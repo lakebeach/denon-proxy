@@ -22,7 +22,7 @@ export function PowerButton(props) {
       class="flex items-center justify-center w-8 h-8 p-0 border-0 rounded-full"
       onClick={() => sendCommand(isOn() ? 'OFF': 'ON')}
     >
-      <PowerIcon class="w-full" style={{fill: isOn() ? 'lime' : 'red'}} />
+      <PowerIcon class="w-full" style={{color: isOn() ? 'lime' : 'red'}} />
     </button>
   )
 }
