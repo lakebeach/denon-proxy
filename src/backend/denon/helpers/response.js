@@ -28,7 +28,8 @@ export function parse(data) {
     }
   }
   if (!parsedData) {
-    throw new Error(`unable to parse data: ${data}`);
+    console.warn(`unable to parse data: ${data}`);
+    return;
   }
   if (parsedData.type === 'info') {
     const rows = {};

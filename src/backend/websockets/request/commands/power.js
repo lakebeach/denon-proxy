@@ -9,8 +9,8 @@ export function power({zone, value}) {
 function parseValue(value, zone) {
   switch (typeof value) {
     case 'string': {
-      if(zone === 'A') {
-        if(value === 'OFF') {
+      if (zone === 'A') {
+        if (value === 'OFF') {
           return 'STANDBY';
         }
       } else if (/^ON|OFF/.test(value)) {
@@ -20,7 +20,7 @@ function parseValue(value, zone) {
     }
 
     case 'boolean': {
-      if(zone === 'A') {
+      if (zone === 'A') {
         return value ? 'ON' : 'STANDBY';
       }
       return value ? 'ON' : 'OFF';

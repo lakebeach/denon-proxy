@@ -38,14 +38,18 @@ export default class Connection {
       this.#socket = new Socket({ allowHalfOpen: true });
       this.#socket.setTimeout(250);
       this.#socket.setEncoding('utf8');
-      this.#socket.on('error', (err) => {
+      this.#socket.on('error', async (err) => {
         console.error(err);
+        await this.close();
+        this.connect();
       });
       this.#socket.on('data', (buffer) => {
         const data = buffer.toString().trim();
         try {
           const parsedData = parseResponse(data);
-          this.#eventEmitter.emit('data', parsedData.command, parsedData.value, parsedData.type);
+          if (parsedData) {
+            this.#eventEmitter.emit('data', parsedData.command, parsedData.value, parsedData.type);
+          }
         } catch (e) {
           console.error(e, data);
         }

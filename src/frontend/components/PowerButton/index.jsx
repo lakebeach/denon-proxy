@@ -1,6 +1,6 @@
+import { PowerIcon } from "../icons/PowerIcon";
 import { onMount } from "solid-js";
 import { useDenon } from "../../api/DenonClient";
-import { PowerIcon } from "../icons/PowerIcon";
 
 export function PowerButton(props) {
   const [state, {send}] = useDenon();
@@ -19,7 +19,7 @@ export function PowerButton(props) {
   return (
     <button    
       type="button"
-      class="flex items-center justify-center w-8 h-8 p-0 border-0 rounded-full"
+      class="button-icon-only"
       onClick={() => sendCommand(isOn() ? 'OFF': 'ON')}
     >
       <PowerIcon class="w-full" style={{color: isOn() ? 'lime' : 'red'}} />

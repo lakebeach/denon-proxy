@@ -1,4 +1,5 @@
 import { AppleTvIcon } from "../icons/AppleTvIcon";
+import { Button } from "../Button";
 import { SourceIcon } from "../icons/SourceIcon";
 import { SpotifyIcon } from "../icons/SpotifyIcon";
 import { useDenon } from "../../api/DenonClient";
@@ -12,13 +13,12 @@ export function MainSourceButton(props) {
 }
 
 export function SpotifyButton(props) {
-  return <SourceButton {...props} source="NET" Icon={SpotifyIcon} color="1ED760" />
+  return <SourceButton {...props} source="NET" Icon={SpotifyIcon} color="#1ED760" />
 }
 
 function SourceButton(props) {
   const [state, {send}] = useDenon();
-  const isOn = () => (state[props.zone]?.source === props.source
-    && state[props.zone]?.power === 'ON');
+  const isSelected = () => state[props.zone]?.source === props.source;
   const sendCommand = () => {
     const command = {
       zone: props.zone,
@@ -29,14 +29,8 @@ function SourceButton(props) {
   };
 
   return (
-    <button
-      {...props}
-      type="button"
-      class="flex items-center justify-center w-8 h-8 p-0 border-0 rounded-full"
-      onClick={() => sendCommand()}
-      disabled={isOn()}
-    >
-      <props.Icon class="w-full" style={{color: isOn() ? props.color : 'dimgray'}} />
-    </button>
+    <Button {...props} style={{color: isSelected() ? props.color : null}} onClick={() => sendCommand()}>
+      <props.Icon class="w-full" />
+    </Button>
   )
 }
