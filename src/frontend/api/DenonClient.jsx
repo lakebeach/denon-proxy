@@ -21,13 +21,20 @@ export const DenonProvider = (props) => {
   const [state, setState] = createStore(defaultState);
   const url = `ws://${props.host}:${props.port}`;
   const connect = () => {
-    socket = openSocket(url, (data) => {
+    const handleData = (data) => {
       if(!data) {
         return;
       }
       const {zone, parameter, value} = data;
       const newState = { ...(unwrap(state)[zone]), [parameter]: value };
       setState(zone, reconcile(newState));
+    };
+    socket = openSocket(url, (data) => {
+      if(Array.isArray(data))
+        data.forEach(handleData);
+      else {
+        handleData(data);
+      }
     });
   };
   

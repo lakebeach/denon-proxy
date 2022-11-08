@@ -1,8 +1,11 @@
 import { WebSocketServer } from 'ws';
+import Cache from './cache.js';
 import { parse as parseRequest } from './request/index.js';
-import { parse as parseResponse } from './response/index.js';
+import { parse as parseResponse, parseCache } from './response/index.js';
 
 export default class Server {
+  #cache;
+
   #clients;
 
   #denon;
@@ -18,6 +21,7 @@ export default class Server {
   #wss;
 
   constructor(denonConnection, port) {
+    this.#cache = new Cache();
     this.#clients = new Set();
     this.#denon = denonConnection;
     this.#port = port;
@@ -48,6 +52,8 @@ export default class Server {
         console.log('connection closed');
         this.#clients.delete(ws);
       });
+
+      ws.send(parseCache(this.#cache.content()));
     });
     this.#wss.on('close', () => {
       clearInterval(this.#pongInterval);
@@ -57,6 +63,7 @@ export default class Server {
       if(!response) {
         return;
       }
+      this.#cache.add(type, command, value);
       this.#clients.forEach((client) => { client.send(response); });
     });
     this.#pongInterval = setInterval(() => {
