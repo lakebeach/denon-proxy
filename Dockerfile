@@ -18,15 +18,16 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Copy and install dependencies
-COPY package*.json ./
+COPY --chown=node:node package*.json ./
 RUN npm install --omit=dev
 
 # Copy everything else
-COPY --from=builder /usr/app/dist ./dist
-COPY ./src/proxy.js ./src/
-COPY ./src/backend ./src/backend
+COPY --chown=node:node --from=builder /usr/app/dist ./dist
+COPY --chown=node:node ./src/proxy.js ./src/
+COPY --chown=node:node ./src/backend ./src/backend
 
 # Expose the web service port
 EXPOSE ${WEB_PORT} ${WS_PORT}
 
+USER node
 CMD node . ${AVR_HOST} ${WEB_PORT} ${WS_PORT}
