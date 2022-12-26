@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint",
+    "heybourn.headwind",
+    "bradlc.vscode-tailwindcss",
+    "macieklad.tailwind-sass-syntax"
+  ]
+}

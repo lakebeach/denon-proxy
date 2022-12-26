@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:node/recommended"
+  ],
+  "env": {
+    "browser": false,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": ["node"],
+  "root": true
+}
