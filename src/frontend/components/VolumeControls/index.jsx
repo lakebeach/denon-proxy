@@ -7,7 +7,7 @@ export function VolumeControls(props) {
     <div class="flex items-center justify-between w-full gap-4">
       <MuteButton zone={props.zone} />
       <VolumeDownButton zone={props.zone} />
-      <VolumeSlider zone={props.zone} />
+      <VolumeSlider zone={props.zone} logical={props.logical} />
       <VolumeUpButton zone={props.zone} />
     </div>
   );

@@ -10,7 +10,7 @@ export function ZoneControls(props) {
         <PowerButton zone={props.zone} />
       </label>
       <SourceSelector zone={props.zone} />
-      <VolumeControls zone={props.zone} />
+      <VolumeControls zone={props.zone} logical={props.logical} />
     </article>
   );
 }

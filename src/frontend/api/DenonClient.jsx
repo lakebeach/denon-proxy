@@ -19,6 +19,7 @@ const DenonContext = createContext([
 export const DenonProvider = (props) => {
   let socket;
   const [state, setState] = createStore(defaultState);
+  // eslint-disable-next-line solid/reactivity
   const url = `ws://${props.host}:${props.port}`;
   const connect = () => {
     const handleData = (data) => {

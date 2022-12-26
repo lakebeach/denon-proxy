@@ -9,7 +9,7 @@ function App() {
       <PageHeader />
       <main class="flex flex-wrap p-4 gap-4">
         <ZoneControls label="Vardagsrummet" zone="M" />
-        <ZoneControls label="Köket" zone="2" />
+        <ZoneControls label="Köket" zone="2" logical={true} />
         {/* <ZoneControls label="Zon3" zone="3" /> */}
       </main>
     </>
