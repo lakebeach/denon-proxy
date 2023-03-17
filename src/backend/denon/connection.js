@@ -1,7 +1,7 @@
 import { EventEmitter } from 'node:events';
 import { Socket } from 'node:net';
-import { parse as parseInput } from "./helpers/request.js";
-import { parse as parseResponse } from "./helpers/response.js";
+import { parse as parseInput } from './helpers/request.js';
+import { parse as parseResponse } from './helpers/response.js';
 
 export default class Connection {
   #eventEmitter;
@@ -103,4 +103,4 @@ export default class Connection {
       return;
     }
   };
-};
+}

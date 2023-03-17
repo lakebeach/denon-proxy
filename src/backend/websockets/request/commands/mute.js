@@ -6,7 +6,7 @@ export function mute({zone, value}) {
   return `Z${zone}MU${value}`;
 }
 
-function parseValue(value, zone) {
+function parseValue(value/*, zone*/) {
   switch (typeof value) {
     case 'string': {
       if (/^ON|OFF/.test(value)) {

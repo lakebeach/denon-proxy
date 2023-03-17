@@ -6,7 +6,7 @@ export function volume({zone, value}) {
   return `Z${zone}${val}`;
 }
 
-function parseValue(value, zone) {
+function parseValue(value/*, zone*/) {
   switch (typeof value) {
     case 'string': {
       return value;

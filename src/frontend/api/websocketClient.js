@@ -1,8 +1,8 @@
 export function openSocket(url, onData) {
   const socket = new WebSocket(url);
 
-  socket.onopen = (e) => {
-    console.log("[open] Connection established");
+  socket.onopen = (/* e */) => {
+    console.log('[open] Connection established');
   };
   
   socket.onmessage = (e) => {

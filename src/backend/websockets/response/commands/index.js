@@ -4,4 +4,4 @@ export { mute } from './mute.js';
 export { power } from './power.js';
 export { volume } from './volume.js';
 export { zone } from './zone.js';
-export function noop() { return ''; };
+export function noop() { return ''; }

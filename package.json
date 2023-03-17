@@ -9,8 +9,10 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "eslint": "eslint --max-warnings 0 --fix",
-    "stylelint": "stylelint \"./src/frontend/**/*.css\" --fix",
+    "eslint": "eslint ./src --max-warnings 0",
+    "lint": "npm run eslint -- --fix & npm run stylelint -- --fix",
+    "printrules": "eslint --print-config $1 > printrules.json",
+    "stylelint": "stylelint \"./src/frontend/**/*.css\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
@@ -30,6 +32,9 @@
     "url": "https://github.com/lakebeach/denon-proxy/issues"
   },
   "homepage": "https://github.com/lakebeach/denon-proxy#readme",
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "express": "4.18.2",
     "ws": "8.11.0"
@@ -63,14 +68,20 @@
       "ecmaVersion": "latest"
     },
     "plugins": ["solid"],
-    "root": true
+    "root": true,
+    "globals": {
+      "process": "readonly"
+    },
+    "rules": {
+      "quotes": ["error", "single"]
+    }
   },
   "lint-staged": {
     "./src/**/*.{js,jsx}": [
-      "eslint --max-warnings 0 --fix"
+      "eslint ./src --max-warnings 0 --fix"
     ],
     "./src/frontend/**/*.css": [
-      "stylelint \"./src/frontend/**/*.css\""
+      "stylelint \"./src/frontend/**/*.css\" --fix"
     ]
   },
   "stylelint": {

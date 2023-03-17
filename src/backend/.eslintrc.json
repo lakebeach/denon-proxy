@@ -12,5 +12,5 @@
     "ecmaVersion": "latest"
   },
   "plugins": ["node"],
-  "root": true
+  "root": false
 }
