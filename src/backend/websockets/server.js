@@ -39,7 +39,7 @@ export default class Server {
 
       ws.on('pong', () => { 
         ws.isAlive = true;
-        console.log('pong');
+        // console.log('pong');
       });
     
       ws.on('message', async (message) => {

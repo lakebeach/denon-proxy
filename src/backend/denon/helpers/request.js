@@ -24,7 +24,7 @@ export function parse(input) {
     }
   }
   if (!parsedInput) {
-    throw new Error('unable to parse input');
+    throw new Error('unable to parse input, ' + input);
   }
   return `${parsedInput.command}${parsedInput.parameters ?? ''}\r`;
 }
