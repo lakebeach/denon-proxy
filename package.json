@@ -13,8 +13,7 @@
     "lint": "npm run eslint -- --fix & npm run stylelint -- --fix",
     "printrules": "eslint --print-config $1 > printrules.json",
     "stylelint": "stylelint \"./src/frontend/**/*.css\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
