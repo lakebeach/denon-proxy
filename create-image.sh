@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eou pipefail
 
 git fetch
 git reset --hard @{u}
